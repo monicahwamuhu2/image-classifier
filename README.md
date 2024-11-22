@@ -1,10 +1,13 @@
 Image Classification Web App
+
 This project is a web-based image classification application built using Flask, TensorFlow, and a pre-trained model on the CIFAR dataset. Users can upload images to the web app, and it predicts the class of the uploaded image. This app is a great example of deploying a machine learning model for real-time predictions in a simple web interface.
 
 Features
+
 Image Upload: Users can upload images to be classified.
 Predictions: The model provides predictions on uploaded images with a list of possible classes (top 3) and a confidence score.
 Feedback Form: Users can submit feedback on the predictions to help improve the model in future updates.
+
 ![Screenshot (138)](https://github.com/user-attachments/assets/e928afd4-747f-4ab9-acc8-c44875eeacad)
 
 ![Screenshot (137)](https://github.com/user-attachments/assets/caf09134-cd9c-4865-a609-6cfde863933a)

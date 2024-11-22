@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Classification Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Image Classification Result</h1>
+    <img src="{{ image_path }}" alt="Uploaded Image" width="200">
+    <h2>Top Predictions:</h2>
+    <ul>
+        {% for class_name, prob in prediction %}
+        <li>{{ class_name }}: {{ prob * 100 | round(2) }}%</li>
+        {% endfor %}
+    </ul>
+    <h2>Predicted Class: {{ predicted_class }}</h2>
+    <h3>Was this prediction correct?</h3>
+    <button onclick="window.location.href='/'">Yes</button>
+    <button onclick="showFeedbackForm()">No</button>
+
+    <div id="feedback-form" style="display:none;">
+        <h3>Please provide the correct class:</h3>
+        <form action="/feedback" method="post">
+            <input type="hidden" name="image_path" value="{{ image_path }}">
+            <label for="correct_class">Correct Class:</label>
+            <select id="correct_class" name="correct_class">
+                {% for class_name in class_names %}
+                <option value="{{ class_name }}">{{ class_name }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function showFeedbackForm() {
+            document.getElementById('feedback-form').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
